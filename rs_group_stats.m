@@ -528,15 +528,6 @@ for sn=1:numel(sub_ids)
     store_all_pos_par(sn,:)=sub_brain_pos_par;
 end
 
-%to use whole_brain_regression function
-%make design matrix
-X=[ptsd_dx sex age site];
-filename='ptsd_v_control_t_ROI_250_resid';
-whole_brain_data=store_all_pos_par;%data you care about in participant x brain space
-mask=in_brain;
-%data is an original nifti file loaded in and untouched
-message = whole_brain_regression(whole_brain_data,X,filename,mask,data);
-
 % Node analysis at the group level to determine critical t-values
 % load in all relevant inputs
 
