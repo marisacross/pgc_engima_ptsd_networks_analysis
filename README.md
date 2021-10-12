@@ -73,9 +73,9 @@ Before beginning analysis, please review the following articles which are ESSENT
 ## References
 
 Key references include:
-- Ross, M.C. and the PGC-ENIGMA PTSD Consortium. Resolution limit-free community detection reveals unique patterns of resting-state network connectivity in posttraumatic stress disorder: A PGC-ENIGMA PTSD Consortium investigation. medRxiv, https://doi.org/10.1101/2021.06.24.21259102
-- Bordier, C., Nicolini, C., Forcellini, G. & Bifone, A. Disrupted modular organization of primary sensory brain areas in schizophrenia. Neuroimage Clin 18, 682–693 (2018)
-- Craddock, R. C., James, G. A., Holtzheimer, P. E., Hu, X. P. & Mayberg, H. S. A whole brain fMRI atlas generated via spatially constrained spectral clustering. Hum Brain Mapp 33, 1914–1928 (2012)
-- Yu, M. et al. Statistical harmonization corrects site effects in functional connectivity measurements from multi-site fMRI data. Hum Brain Mapp 39, 4213–4227 (2018)
-- Nicolini, C., Bordier, C. & Bifone, A. Community detection in weighted brain connectivity networks beyond the resolution limit. NeuroImage 146, 28–39 (2017)
-- Aldecoa, R. & Marín, I. Surprise maximization reveals the community structure of complex networks. Sci Rep 3, 1060 (2013)
+- Ross, M.C. and the PGC-ENIGMA PTSD Consortium. Resolution limit-free community detection reveals unique patterns of resting-state network connectivity in posttraumatic stress disorder: A PGC-ENIGMA PTSD Consortium investigation. *medRxiv*, https://doi.org/10.1101/2021.06.24.21259102
+- Bordier, C., Nicolini, C., Forcellini, G. & Bifone, A. Disrupted modular organization of primary sensory brain areas in schizophrenia. *Neuroimage Clin 18*, 682–693 (2018)
+- Craddock, R. C., James, G. A., Holtzheimer, P. E., Hu, X. P. & Mayberg, H. S. A whole brain fMRI atlas generated via spatially constrained spectral clustering. *Hum Brain Mapp 33*, 1914–1928 (2012)
+- Yu, M. et al. Statistical harmonization corrects site effects in functional connectivity measurements from multi-site fMRI data. *Hum Brain Mapp 39*, 4213–4227 (2018)
+- Nicolini, C., Bordier, C. & Bifone, A. Community detection in weighted brain connectivity networks beyond the resolution limit. *NeuroImage 146*, 28–39 (2017)
+- Aldecoa, R. & Marín, I. Surprise maximization reveals the community structure of complex networks. *Sci Rep 3*, 1060 (2013)
