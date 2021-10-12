@@ -1,0 +1,44 @@
+#! /bin/csh
+
+#Author: Marisa C. Ross
+#Date: April 2021
+
+set study = $argv[1]
+set subj = $argv[2]
+		
+		echo ""
+		echo -------------------------------------------------------------------------------
+		echo spatial smoothing
+		echo -------------------------------------------------------------------------------
+		rm -f ${study}/${subj}/preproc.nii.smooth.resid+tlrc*
+		3dBlurToFWHM -input ${study}/${subj}/preproc.nii \
+			-prefix ${study}/${subj}/preproc.smooth.resid \
+			-FWHM 8.0 \
+			-automask
+		
+
+
+		echo ""
+		echo -------------------------------------------------------------------------------
+		echo scaling to percent signal change
+		echo -------------------------------------------------------------------------------
+		rm -f ${study}/${subj}/preproc.mean.resid+org*
+		rm -f ${study}/${subj}/preproc.mask.resid+org*
+		rm -f ${study}.${subj}/preproc.scaled.resid+org*
+		rm -f ${study}.${subj}/preproc.std.resid+org*
+
+		3dTstat -prefix ${study}/${subj}/preproc.mean.resid ${study}/${subj}/preproc.smooth.resid+orig
+
+		
+		3dAutomask -dilate 1 \
+			-prefix ${study}/${subj}/preproc.mask.resid \
+			${study}/${subj}/preproc.smooth.resid+orig
+
+		3dcalc -a ${study}/${subj}/preproc.smooth.resid+orig \
+			-b ${study}/${subj}/preproc.mean.resid+orig \
+			-c ${study}/${subj}/preproc.mask.resid+orig \
+			-expr "c*((a/b)*100)" \
+			-float \
+			-prefix ${study}/${subj}/preproc.scaled.resid
+
+		rm -f ${study}/${subj}/preproc.smooth.resid+orig*
