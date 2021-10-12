@@ -559,7 +559,3 @@ critcal_values = stat_crit_values;
 t_values = result.save_stat;
 p_values = result.save_ps;
 
-% order of graph theory indices and briks in ptsd_v_control_ptsd.nii with critical t values:
-% [community_structure (1.0396) roi_strength (3.1377) roi_clust (3.3042) pos_par (3.3919) neg_par(nan) ...,
-% roi_within_z (nan) roi_betweeness (3.5029)]
-
