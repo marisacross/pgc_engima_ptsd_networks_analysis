@@ -7,27 +7,18 @@ Resting State Network Analysis with Asymptotical Surprise and PACO
 
 This project uses the PGC-ENIGMA PTSD resting-state dataset and resolution-limit-free community detection via PACO to investigate differences in functional network topology in PTSD. 
 
-**How to use this repo template:**
+**How to Use This Repo:**
 
-1.  Click the `Use this template` button above. This will create a new
-    repo with the contents of this one. You can find more information
-    about repo templates
-    [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
+1.  All necessary functions for network analysis are called from the [master.m](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/blob/main/master.m) script. This is the primary script that individual researchers can use to enter paths to and specifications for their datasets. Examples of text files for subject numbers and demographic/clinical information are contained [here](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/blob/main/sub_ids_all_col2) and [here](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/blob/main/clinical_data_all_col2).  
 
-2.  In this new repo, if you **are not** using R delete the R Markdown
-    template. Then, edit the README to add the appropriate title, Repo
-    Manager, and other content. The R Markdown README will automatically
-    put the current date in `full_month_name day, year` format when
-    knitted. If you are not using R, make sure to update the date as you
-    update the repo.
+2. Functions for four main steps for network analysis along with helper functions are contained in the [network_functions/](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/tree/main/network_functions) directory. The steps for network analysis should be executed in the following order:
+    1. [find_common_rois_250_function](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/blob/main/network_functions/find_common_ROIs_250_function.m)
+    2. [stack_sub_matrices_function_combat_enigma](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/blob/main/network_functions/stack_sub_matrices_function_combat_enigma.m)
+    3. [calculate_group_level_community_structure_function_surprise_250.m](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/blob/main/network_functions/calculate_group_level_community_structure_function_surprise_250.m)
+    4. [calculate_pre_defined_network_within_subject.m](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/blob/main/network_functions/calculate_pre_defined_network_within_subject.m)
 
-3.  If you are creating a repo that is only a single R Markdown document
-    without any other scripts or documents/reports, you can omit the
-    “Documents and Reports” and “Table of Contents” sections and include
-    your content at the end of this README.
+3.  The user's system MUST have the Partitioning Cost Optimization (PACO) from Carlo Nicolini installed. Please see [the PACO GitHub](https://github.com/CarloNicolini/paco) for instructions and downloads. 
 
-This Overview section should be used to give a brief abstract of your
-project.
 
 ## Documents and Reports
 
