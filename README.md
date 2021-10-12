@@ -65,10 +65,10 @@ Before beginning analysis, please review the following articles which are ESSENT
 
 ## Table of Contents
 
--   **[ComBat\Functions:](top_level_folder/)** *contains all functions necessary to use ComBat Harmonization*
--   **[network\functions:](top_level_folder/)** *contains necessary functions for network analysis*
+-   **[ComBat_Functions:](top_level_folder/)** *contains all functions necessary to use ComBat Harmonization*
+-   **[network_functions:](top_level_folder/)** *contains necessary functions for network analysis*
 -   **[master.m:](top_level_file.ext)** *example master script to call all community detection functions and save results*
--   **[rs\group\stats.m:](top_level_file.ext)** *example LMEs and node-level analysis*
+-   **[rs_group_stats.m:](top_level_file.ext)** *example LMEs and node-level analysis*
 
 ## References
 
