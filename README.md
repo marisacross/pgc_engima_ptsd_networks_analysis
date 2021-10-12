@@ -1,6 +1,6 @@
 Resting State Network Analysis with Asymptotical Surprise and PACO
 ================
-**Repo Manager:** Marisa Ross <br />
+**Repo Manager:** Marisa C. Ross, PhD <br />
 **Last updated:** October 12, 2021
 
 ## Overview
@@ -22,14 +22,10 @@ This project uses the PGC-ENIGMA PTSD resting-state dataset and resolution-limit
 
 ## Documents and Reports
 
-If you have any important documents or reports you want people to view,
-make sure to put them here.
+Before beginning analysis, please review the following articles which are ESSENTIAL to understanding the execution of this pipeline.  
 
-Use the following format:
-
--   ***[Title of Document 1](path/to/document.pdf)***
--   ***[Title of Document 2:](path/to/document.pdf)*** *a short
-    description of this document (if necessary)*
+-   ***[Ross et al. 2021 Resolution limit-free community detection reveals unique patterns of resting-state network connectivity in posttraumatic stress disorder: A PGC-ENIGMA PTSD Consortium investigation ](https://www.medrxiv.org/content/10.1101/2021.06.24.21259102v1)*** *This is pre-print that describes the original investigation with the ENGIMA PTSD resting-state set, led by Marisa C. Ross, PhD*
+-   ***[Nicolini, Bordier, & Bifone 2017 Community detection in weighted brain connectivity networks beyond the resolution limit:](https://www.sciencedirect.com/science/article/pii/S1053811916306449)*** *This is the primary resource for description of PACO and its use in functional brain networks *
 
 ## Methodology
 
