@@ -19,13 +19,15 @@ This project uses the PGC-ENIGMA PTSD resting-state dataset and resolution-limit
 
 3.  The user's system MUST have the Partitioning Cost Optimization (PACO) from Carlo Nicolini installed. Please see [the PACO GitHub](https://github.com/CarloNicolini/paco) for instructions and downloads. 
 
+4.  The vast majority of this pipeline runs through Matlab, so familiarity with Matlab is essential. 
+
 
 ## Documents and Reports
 
 Before beginning analysis, please review the following articles which are ESSENTIAL to understanding the execution of this pipeline.  
 
 -   ***[Ross et al. 2021 Resolution limit-free community detection reveals unique patterns of resting-state network connectivity in posttraumatic stress disorder: A PGC-ENIGMA PTSD Consortium investigation ](https://www.medrxiv.org/content/10.1101/2021.06.24.21259102v1)*** *This is pre-print that describes the original investigation with the ENGIMA PTSD resting-state set, led by Marisa C. Ross, PhD*
--   ***[Nicolini, Bordier, & Bifone 2017 Community detection in weighted brain connectivity networks beyond the resolution limit:](https://www.sciencedirect.com/science/article/pii/S1053811916306449)*** *This is the primary resource for description of PACO and its use in functional brain networks *
+-   ***[Nicolini, Bordier, & Bifone 2017 Community detection in weighted brain connectivity networks beyond the resolution limit:](https://www.sciencedirect.com/science/article/pii/S1053811916306449)*** *This is the primary resource for description of PACO and its use in functional brain networks*
 
 ## Methodology
 
