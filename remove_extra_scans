@@ -1,8 +1,0 @@
-#! /bin/csh
-
-set study = $argv[1]
-set subj = $argv[2]
-
-	rm -r -f ${study}/${subj}/preproc.nii*
-	rm -r -f ${study}/${subj}/preproc.mask.resid+orig*
-	rm -r -f ${study}/${subj}/preproc.mean.resid+orig*
