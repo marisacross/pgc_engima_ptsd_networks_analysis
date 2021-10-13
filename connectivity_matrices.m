@@ -27,22 +27,22 @@ site = clinical_data(:,2);
 subs = clinical_data(:,1);
 
 %% Load in network results
-load result_step_one_all_col2.mat
-good_ROIs = result_step_one_surprise_250.good_ROIs;
-mask_values = result_step_one_surprise_250.mask_values;
+load result_step_one.mat
+good_ROIs = result_step_one.good_ROIs;
+mask_values = result_step_one.mask_values;
 
-load result_step_two_all_col2.mat
+load result_step_two.mat
 group_r = result_step_two.big_r_resid;
 all_sub_r = result_step_two.harmonized;
 
-load result_step_four_all_col2.mat
+load result_step_four.mat
 community_structure = result_step_four.community_structure;
 community_sort_index = result_step_four.community_sort_index;
 communities_group = numel(unique(community_structure));
 surprise = result_step_four.surprise;
 
-load result_step_five_full_sample.mat
-pos_par = result_step_five_surprise_sample_mask.all_graph_theory_indices(:,:,4);
+load result_step_five.mat
+pos_par = result_step_five.all_graph_theory_indices(:,:,4);
 mean_pos_par = mean(pos_par,2);
 
 load all_whole_brain_strength 
