@@ -2,19 +2,17 @@
 %Author: Marisa C. Ross, PhD
 %Date: May 2021
 
-addpath(genpath('/Volumes/Vol2/cisler/DOP/network/'))
-addpath(genpath('/Volumes/Vol2/cisler/matlab_toolboxes/'))
-addpath(genpath('/Volumes/Vol2/cisler/network/functions/'))
+% Use this script to calculate graph network measures for individual networks of choice (this example uses the DMN and CEN)
 clear
 
 %%
 %define initial variables  
 
-sub_ids = load('/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/site_testing/sub_ids_all_col2');
+sub_ids = load('/path/to/subject_list');
 
 
 %% Load in and Define Clinical Data
-clinical_data=load(['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/site_testing/clinical_data_all_col2']);
+clinical_data=load(['/path/to/clinical_data']);
 keep_clinical=find(ismember(clinical_data(:,1),sub_ids)==1);
 clinical_data=clinical_data(keep_clinical,:);
 
@@ -28,22 +26,22 @@ site = clinical_data(:,2);
 subs = clinical_data(:,1);
 
 %% Load in network results
-load result_step_one_all_col2.mat
-good_ROIs = result_step_one_surprise_250.good_ROIs;
-mask_values = result_step_one_surprise_250.mask_values;
+load result_step_one.mat
+good_ROIs = result_step_one.good_ROIs;
+mask_values = result_step_one.mask_values;
 
-load result_step_two_all_col2.mat
+load result_step_two.mat
 group_r = result_step_two.big_r_resid;
 all_sub_r = result_step_two.harmonized;
 
-load result_step_four_all_col2.mat
+load result_step_four.mat
 community_structure = result_step_four.community_structure;
 community_sort_index = result_step_four.community_sort_index;
 communities_group = numel(unique(community_structure));
 surprise = result_step_four.surprise;
 
-load result_step_five_full_sample.mat
-pos_par = result_step_five_surprise_sample_mask.all_graph_theory_indices(:,:,4);
+load result_step_five.mat
+pos_par = result_step_five.all_graph_theory_indices(:,:,4);
 mean_pos_par = mean(pos_par,2);
 %% use group-level corr matrices to isolate upper triangle and calculate mean correlation strength
 
@@ -71,7 +69,7 @@ save all_whole_brain_strength all_whole_brain_strength
 %% within-networks
 
 %define the canonical networks based on sample spatial map
-base=load_nii(['all_col2_10000.nii']);
+base=load_nii(['group_level_structure.nii']);
 brain=double(base.img);
 brain_size=size(brain);
 max_modules=max(max(max(brain)));
