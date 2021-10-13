@@ -2,20 +2,18 @@
 %Author: Marisa C. Ross, PhD
 %Date: April 2021
 
-addpath(genpath('/Volumes/Vol2/cisler/DOP/network/'))
-addpath(genpath('/Volumes/Vol2/cisler/matlab_toolboxes/'))
-addpath(genpath('/Volumes/Vol2/cisler/network/functions/'))
-addpath(genpath('/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/final_analyses/BrainNetViewer_20191031/'))
+%use this script to build connectivity matrices for groups
+
 clear
 
 %%
 %define initial variables  
 
-sub_ids = load('/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/site_testing/sub_ids_all_col2');
+sub_ids = load('/path/to/subject/list');
 
 
 %% Load in and Define Clinical Data
-clinical_data=load(['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/site_testing/clinical_data_all_col2']);
+clinical_data=load(['/path/to/clinical_data']);
 keep_clinical=find(ismember(clinical_data(:,1),sub_ids)==1);
 clinical_data=clinical_data(keep_clinical,:);
 
