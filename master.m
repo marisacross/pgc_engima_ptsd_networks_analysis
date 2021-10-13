@@ -3,12 +3,6 @@
 %Date: March 2021
 
 
-addpath(genpath('/usr/local/bin/')) 
-addpath(genpath('/Volumes/Vol2/cisler/DOP/network/'))
-addpath(genpath('/Volumes/Vol2/cisler/matlab_toolboxes/paco/paco-master/build'))
-addpath(genpath('/Volumes/Vol2/cisler/matlab_toolboxes/'))
-addpath(genpath('/Volumes/Vol2/cisler/network/functions/'))
-
 clear
 
 %%
@@ -26,17 +20,17 @@ clear
 %Apply PACO algorithm to calculate sample-level community structure and
 %generate sample-level spatial map
 %%%%%%%%%%%%%%%
-%4) do within subject network analyses, calculating large-scale graph
+%4) do within subject network analyses using the group-level mask, calculating large-scale graph
 %theory indices and storing connectivity matrices and subject specific
 %spatial maps of the resulting statistics
 %%%%%%%%%%%%%%%
 
 %%
 
-sub_ids = load('/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/full_analyses/sub_ids');
+sub_ids = load('path/to/subject/file');
 
 %specify location of atlas
-atlas_location='/Volumes/Vol2/cisler/Marisa/AS_testing/parcellations/craddock_resampled_enigma_size250.nii';
+atlas_location='/path/to/atlas/file';
 
 %create cell array of each participant's path location and filenames to load
 %into function later
@@ -48,7 +42,7 @@ for sn=1:numel(sub_ids)
         elseif sub_ids(sn)>=10&&sub_ids(sn)<100
             sub_num=['00' num2str(sub_ids(sn))];
         end
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Tours/' sub_num '/preproc.scaled.resid+orig']};
+        resting_filename(sn,1)={['/path/to/site/directory/' sub_num '/preproc.scaled.resid+orig']};
     
     elseif sub_ids(sn) >= 42 && sub_ids(sn) <= 126 %Emory
         if sub_ids(sn)>=10&&sub_ids(sn)<100
@@ -57,93 +51,89 @@ for sn=1:numel(sub_ids)
             sub_num=['0' num2str(sub_ids(sn))];
         end
         
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Emory/' sub_num '/preproc.scaled.resid+orig']};  
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']};  
     
     elseif sub_ids(sn)  >= 127 && sub_ids(sn) <=206 %McLean 
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/McLean/' sub_num '/preproc.scaled.resid+orig']};
+        resting_filename(sn,1)={['/path/to/site/directory/' sub_num '/preproc.scaled.resid+orig']};
    
     elseif sub_ids(sn) >= 207 && sub_ids(sn) <=256 %Vanderbilt
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Vanderbilt/' sub_num '/preproc.scaled.resid+orig']};
+        resting_filename(sn,1)={['/path/to/site/directory/' sub_num '/preproc.scaled.resid+orig']};
     
-    elseif sub_ids(sn) >= 257 && sub_ids(sn) <=362 %UWC
+    elseif sub_ids(sn) >= 257 && sub_ids(sn) <=362 %UWCisler
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Wisc_Cisler/' sub_num '/preproc.scaled.resid+orig']};
+        resting_filename(sn,1)={['/path/to/site/directory/' sub_num '/preproc.scaled.resid+orig']};
 
       elseif sub_ids(sn) >= 363 && sub_ids(sn) <=395 %Gronigen
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Groningen/' sub_num '/preproc.scaled.resid+orig']};       
-     
-    elseif sub_ids(sn) >= 396 && sub_ids(sn) <=444 %Beijing
-        sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Beijing/' sub_num '/preproc.scaled.resid+orig']};       
+        resting_filename(sn,1)={['/path/to/site/directory/' sub_num '/preproc.scaled.resid+orig']};          
 
     elseif sub_ids(sn) >= 445 && sub_ids(sn) <=507 %Michigan
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Michigan/' sub_num '/preproc.scaled.resid+orig']};       
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']};       
                 
     elseif sub_ids(sn) >= 508 && sub_ids(sn) <=551 %Munster
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Munster/' sub_num '/preproc.scaled.resid+orig']};    
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']};    
     
     elseif sub_ids(sn) >= 552 && sub_ids(sn) <=633 %Duke
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Duke/' sub_num '/preproc.scaled.resid+orig']};       
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']};       
     
     elseif sub_ids(sn) >= 634 && sub_ids(sn) <=673 %UMN
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/UMN/' sub_num '/preproc.scaled.resid+orig']};       
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']};       
 
-    elseif sub_ids(sn) >= 674 && sub_ids(sn) <=731 %UWG
+    elseif sub_ids(sn) >= 674 && sub_ids(sn) <=731 %UWGrupe
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Wisc_Grupe/' sub_num '/preproc.scaled.resid+orig']};       
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']};       
     
     elseif sub_ids(sn) >= 732 && sub_ids(sn) <=790 %AMC
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/AMC/' sub_num '/preproc.scaled.resid+orig']};       
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']};       
     
     elseif sub_ids(sn) >= 791 && sub_ids(sn) <=868 %Milwaukee
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Milwaukee/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
     
     elseif sub_ids(sn) >= 869 && sub_ids(sn) <=927 %Utrecht
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Utrecht/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
     
     elseif sub_ids(sn) >= 928 && sub_ids(sn) <=999 %Minneapolis VA
         sub_num=['0' num2str(sub_ids(sn))];
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Minneapolis_VA/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
        
     elseif sub_ids(sn) >= 1000 && sub_ids(sn) <=1070 %Stanford Brains
         sub_num=num2str(sub_ids(sn));
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Stanford/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
         
     elseif sub_ids(sn) >= 1071 && sub_ids(sn) <=1211 %Western Ontario
         sub_num=num2str(sub_ids(sn));
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/WesternOntario/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
     
     elseif sub_ids(sn) >= 1212 && sub_ids(sn) <=1271  %Stanford CausCon
         sub_num=num2str(sub_ids(sn));
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Stanford/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
     elseif sub_ids(sn) >= 1271 && sub_ids(sn) <=1334  %Masaryk
         sub_num=num2str(sub_ids(sn));
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Masaryk/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
     elseif sub_ids(sn) >= 1335 && sub_ids(sn) <=1408  %Columbia
         sub_num=num2str(sub_ids(sn));
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Columbia/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
     elseif sub_ids(sn) >= 1409 && sub_ids(sn) <=1459  %Ghent
         sub_num=num2str(sub_ids(sn));
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Ghent/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
     elseif sub_ids(sn) >= 1460 && sub_ids(sn) <= 1499  %Toledo MVA
         sub_num=num2str(sub_ids(sn));
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Toledo/MVA/' sub_num '/preproc.scaled.resid+orig']}; 
-    elseif sub_ids(sn) >= 1500 && sub_ids(sn) <=1526  %MToledo ONG
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
+    elseif sub_ids(sn) >= 1500 && sub_ids(sn) <=1526  %Toledo ONG
         sub_num=num2str(sub_ids(sn));
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Toledo/ONG/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
     elseif sub_ids(sn) >= 1537 %Waco
         sub_num=num2str(sub_ids(sn));
-        resting_filename(sn,1)={['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/Waco_VA/' sub_num '/preproc.scaled.resid+orig']}; 
+        resting_filename(sn,1)={['/path/to/site/directory' sub_num '/preproc.scaled.resid+orig']}; 
        
     end 
     
@@ -162,7 +152,7 @@ good_ROIs = result_step_one_surprise_250.good_ROIs;
 mask_values = result_step_one_surprise_250.mask_values;
 %step a here: stack subject matrices and caculate big r
 %choose covariates of interest
-clinical_data=load(['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/full_analyses/clinical_data']);
+clinical_data=load(['/path/to/clinical_data']);
 keep_clinical=find(ismember(clinical_data(:,1),sub_ids)==1);
 clinical_data=clinical_data(keep_clinical,:);
 
@@ -203,8 +193,7 @@ pos_big_r_thresh(pos_big_r_thresh<thresh_z)=0;
 d=density_und(pos_big_r_thresh);
 
 num_iter=10000;
-spatial_map_filename=['enigma_rs_250_scan_test_' num2str(num_iter) '.nii'];
-addpath(genpath('/Volumes/Vol2/cisler/Marisa/AS_testing/'));
+spatial_map_filename=['name_of_group_level_map_' num2str(num_iter) '.nii'];
 tic
 [message result_step_four] = calculate_group_level_community_structure_function_surprise_500(atlas_location, num_iter, pos_big_r_thresh, spatial_map_filename,mask_values);
 toc
@@ -218,9 +207,9 @@ communities = numel(unique(community_structure));
 %% Call function to do large-scale network within-subject analysis 
 % determines strength of coupling between networks within an individual
 
-subject_spatial_map_output_prefix = ['/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/full_analyses/sub_maps/rest.surprise_250_scan_test_'];
+subject_spatial_map_output_prefix = ['/path/to/and/name/of/subject/maps'];
 
-%make some kind of for loop that creates a string array for sub_ids, sub_num
+%make sa for loop that creates a string array for sub_ids, sub_num
 %to be user-defined
 
 clear sub_num
@@ -246,14 +235,11 @@ for sn=1:numel(sub_ids)
     elseif sub_ids(sn) >= 207 && sub_ids(sn) <=256 %Vanderbilt
         sub_num{sn}=['0' num2str(sub_ids(sn))];
     
-    elseif sub_ids(sn) >= 257 && sub_ids(sn) <=362 %UWC
+    elseif sub_ids(sn) >= 257 && sub_ids(sn) <=362 %UWCisler
         sub_num{sn}=['0' num2str(sub_ids(sn))];
  
     elseif sub_ids(sn) >= 363 && sub_ids(sn) <=395 %Gronigen
         sub_num{sn}=['0' num2str(sub_ids(sn))];    
-     
-    elseif sub_ids(sn) >= 396 && sub_ids(sn) <=444 %Beijing
-        sub_num{sn}=['0' num2str(sub_ids(sn))];
 
     elseif sub_ids(sn) >= 445 && sub_ids(sn) <=507 %Michigan
         sub_num{sn}=['0' num2str(sub_ids(sn))]; 
@@ -267,7 +253,7 @@ for sn=1:numel(sub_ids)
     elseif sub_ids(sn) >= 634 && sub_ids(sn) <=673 %UMN
         sub_num{sn}=['0' num2str(sub_ids(sn))];       
 
-    elseif sub_ids(sn) >= 674 && sub_ids(sn) <=731 %UWG
+    elseif sub_ids(sn) >= 674 && sub_ids(sn) <=731 %UWGrupe
         sub_num{sn}=['0' num2str(sub_ids(sn))];      
     
     elseif sub_ids(sn) >= 732 && sub_ids(sn) <=790 %AMC
@@ -329,8 +315,8 @@ toc
 save pos_all_sub_r_thresh250 pos_all_sub_r_thresh
 
 %call function to apply PACO-defined group-level map to individual subjects
-addpath(genpath('/Volumes/Vol2/cisler/network/functions/'))
-pre_defined_network_location='/Volumes/Vol2/cisler/Marisa/enigma_rs_networks/full_analyses/all_subs_good_ROIs_222_full.nii';
+
+pre_defined_network_location='path/to/group-level/spatial_map.nii';
 %rename pos_all_sub_r_thresh to all_sub_r so the function will take it
 all_sub_r=pos_all_sub_r_thresh;
 
