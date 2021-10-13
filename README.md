@@ -28,6 +28,7 @@ Before beginning analysis, please review the following articles which are ESSENT
 
 -   ***[Ross et al. 2021 Resolution limit-free community detection reveals unique patterns of resting-state network connectivity in posttraumatic stress disorder: A PGC-ENIGMA PTSD Consortium investigation ](https://www.medrxiv.org/content/10.1101/2021.06.24.21259102v1)*** *This is the pre-print that describes the original investigation with the ENGIMA PTSD resting-state set, led by Marisa C. Ross, PhD*
 -   ***[Nicolini, Bordier, & Bifone 2017 Community detection in weighted brain connectivity networks beyond the resolution limit:](https://www.sciencedirect.com/science/article/pii/S1053811916306449)*** *This is the primary resource for description of PACO and its use in functional brain networks*
+-   ***[Bordier et al. 2018 Disrupted modular organization of primary sensory areas in schizophrenia:](https://www.sciencedirect.com/science/article/pii/S221315821830069X?via%3Dihub)*** *This is an application of PACO to a clinical sample*
 -   ***[Yu et al. 2018 Statistical harmonization corrects site effects in functional connectivity measu rements from multi-site fMRI data](https://onlinelibrary.wiley.com/doi/epdf/10.1002/hbm.24241)*** *Key paper on ComBat harmonization for multi-site projects*
 
 ## Methodology
@@ -56,7 +57,7 @@ Before beginning analysis, please review the following articles which are ESSENT
         -  Saves individual spatial maps and graph theory indices (positive participation cofficient, clustering coefficient, etc.) for every subject.
         -  User can make changes to this function if other graph theory measures are desired. Anything in the Brain Connectivity Toolbox should be compatible 
 3) Define network-specific connectivity metrics
-    - Now that a group-level spatial map has been generated, use it to define networks of interest. Select the modules you want to investigate (the original               analysis selected the DMN and CEN, based on similarity to canonical topology and the boundaries defined in the [atlas from Yeo et al. 2011]                  (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3174820/)). 
+    - Now that a group-level spatial map has been generated, use it to define networks of interest. Select the modules you want to investigate (the original               analysis selected the DMN and CEN, based on similarity to canonical topology and the boundaries defined in the [atlas from Yeo et al. 2011](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3174820/)). 
     - [within_network_connectivity_and_pos_par.m](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/blob/main/within_network_connectivity_and_pos_par.m) provides some examples of how one might go         about calculating network-specific graph theory metrics (e.g. participation coefficient of the DMN)
 4) Within- and between- group statistics and node-level analysis
     - [rs_group_stats.m](https://github.com/marisacross/pgc_engima_ptsd_networks_analysis/blob/main/rs_group_stats.m) provides example Linear Mixed Effects Models and       plots for within- and between-group comparisons of graph theory measures.
